@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="中国 A 级旅游景区交互式可视化地图：全国 5A/4A 分布、点击进入省级地图、地形晕渲、年份演进与统计分析"
+    />
+    <meta property="og:title" content="中国 A 级景区地图 | China Scenic Map" />
+    <meta
+      property="og:description"
+      content="全国 5A/4A 景区分布与省级地图下钻，支持地形晕渲、筛选、搜索与详情"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta name="theme-color" content="#f4f7fb" />
+    <title>中国 A 级景区地图 | China Scenic Map</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%230e1f38'/%3E%3Cpath d='M7 20 Q16 4 25 20' stroke='%2338d0c6' stroke-width='2' fill='none'/%3E%3Ccircle cx='16' cy='13' r='2.5' fill='%23f5c66b'/%3E%3C/svg%3E"
+    />
+    <script>
+      // 在样式加载前应用主题，避免闪烁（与 src/lib/theme.ts 保持一致）
+      ;(function () {
+        try {
+          var t = localStorage.getItem('scenic-theme')
+          if (t !== 'light' && t !== 'dark') {
+            t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+          }
+          document.documentElement.dataset.theme = t
+          var meta = document.querySelector('meta[name="theme-color"]')
+          if (meta) meta.setAttribute('content', t === 'dark' ? '#0e1a2c' : '#f4f7fb')
+        } catch (e) {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

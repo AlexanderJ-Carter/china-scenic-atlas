@@ -1,0 +1,53 @@
+{
+  "name": "china-scenic-atlas",
+  "version": "0.3.0",
+  "description": "中国 A 级旅游景区交互式地图 —— 全国/省图两级下钻、筛选与数据可视化",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "keywords": [
+    "echarts",
+    "vue3",
+    "visualization",
+    "china-map",
+    "scenic-spots",
+    "地图可视化"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "e2e": "node scripts/e2e-smoke.mjs",
+    "data:geo": "node scripts/fetch-geojson.mjs",
+    "data:spots": "node scripts/build-spots.mjs",
+    "data:4a": "node scripts/build-4a-full.mjs",
+    "data:wiki": "node scripts/build-wiki.mjs",
+    "data:hillshade": "node scripts/build-hillshade.mjs",
+    "data:rivers": "node scripts/build-rivers.mjs",
+    "data:validate": "node scripts/validate-spots.mjs",
+    "data:all": "node scripts/fetch-geojson.mjs && node scripts/build-spots.mjs && node scripts/build-4a-full.mjs && node scripts/validate-spots.mjs",
+    "test": "node --test scripts/unit.test.mjs"
+  },
+  "dependencies": {
+    "echarts": "^6.1.0",
+    "vue": "^3.5.45"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.10",
+    "eslint": "^10.14.0",
+    "eslint-plugin-vue": "^10.12.0",
+    "pngjs": "^7.0.0",
+    "prettier": "^3.9.10",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.72.1",
+    "vite": "^8.3.6",
+    "vue-tsc": "^3.3.14"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

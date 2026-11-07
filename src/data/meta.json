@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-11-07T16:07:31.000Z",
+  "spotCount5A": 361,
+  "mainland5A": 359,
+  "spotCount4A": 1142,
+  "sources": [
+    {
+      "name": "文化和旅游部 5A 评定公告（政务公开）",
+      "url": "https://zwgk.mct.gov.cn/zfxxgkml/zykf/"
+    },
+    {
+      "name": "维基百科《国家5A级旅游景区》",
+      "url": "https://zh.wikipedia.org/wiki/国家5A级旅游景区"
+    },
+    {
+      "name": "维基百科各省 4A 景区分类（4A 身份佐证）",
+      "url": "https://zh.wikipedia.org/wiki/Category:4A级旅游景区"
+    },
+    {
+      "name": "aeryzhao/AAAAA（坐标与简介底稿）",
+      "url": "https://github.com/aeryzhao/AAAAA"
+    },
+    {
+      "name": "阿里云 DataV.GeoAtlas（地图边界）",
+      "url": "https://datav.aliyun.com/portal/school/atlas/area_selector"
+    }
+  ],
+  "notes": [
+    "5A 名单经文旅部公告与维基百科双重核对；年份采用官方公告日期口径",
+    "年份修正 28 处；补录 8 条；剔除误收 1 条",
+    "港澳 2 条为非官方参考收录（已在详情中标注）",
+    "黄河壶口瀑布旅游区为晋陕联合评定，仅保留一条（记于山西）",
+    "4A 全量 1142 条：来自维基百科 31 个省级行政区 4A 分类（4A 无国家统一名录），坐标取自词条/Wikidata 并经省份边界落点校验，精选 103 条经对抗性核查并有简介",
+    "4A 评级年份多数未知（null），年份滑块对其不生效"
+  ]
+}

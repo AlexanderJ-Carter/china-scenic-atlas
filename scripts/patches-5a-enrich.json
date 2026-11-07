@@ -1,0 +1,263 @@
+{
+  "$comment": "5A 补强：Commons/官网核实的配图与官网/门票。thumb 写入 wiki.json；官网字段合并进 website-5a.json。",
+  "wikiThumbs": {
+    "常州环球恐龙城休闲旅游区": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/China_Dinosaurs_Museum_in_China_Dinosaurs_Park.jpg/960px-China_Dinosaurs_Museum_in_China_Dinosaurs_Park.jpg",
+    "连云港花果山景区": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/%E8%BF%9E%E4%BA%91%E6%B8%AF%E8%8A%B1%E6%9E%9C%E5%B1%B1-%E9%97%A8%E5%A4%B4.jpg/960px-%E8%BF%9E%E4%BA%91%E6%B8%AF%E8%8A%B1%E6%9E%9C%E5%B1%B1-%E9%97%A8%E5%A4%B4.jpg",
+    "盘锦红海滩风景廊道景区": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/%E7%9B%98%E9%94%A6%E7%BA%A2%E6%B5%B7%E6%BB%A9.JPG/960px-%E7%9B%98%E9%94%A6%E7%BA%A2%E6%B5%B7%E6%BB%A9.JPG",
+    "鄂尔多斯响沙湾景区": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/%E5%86%85%E8%92%99%E5%8F%A4-%E5%93%8D%E6%B2%99%E6%B9%BE%E6%99%AF%E5%8C%BA_-_panoramio.jpg/960px-%E5%86%85%E8%92%99%E5%8F%A4-%E5%93%8D%E6%B2%99%E6%B9%BE%E6%99%AF%E5%8C%BA_-_panoramio.jpg",
+    "和静巴音布鲁克景区": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Bayanbulak_grassland.jpg/960px-Bayanbulak_grassland.jpg",
+    "镇江三山景区（金山·焦山·北固山）": "https://upload.wikimedia.org/wikipedia/commons/5/57/The_gate_of_Jin-Shan_Temple.jpg",
+    "晋中绵山风景区": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Mianshan.jpg/960px-Mianshan.jpg",
+    "克拉玛依世界魔鬼城景区": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/%E6%96%B0%E7%96%86%E4%B9%8C%E5%B0%94%E7%A6%BE%E9%AD%94%E9%AC%BC%E5%9F%8E%E6%99%AF%E8%A7%82.jpg/960px-%E6%96%B0%E7%96%86%E4%B9%8C%E5%B0%94%E7%A6%BE%E9%AD%94%E9%AC%BC%E5%9F%8E%E6%99%AF%E8%A7%82.jpg",
+    "巴中光雾山旅游景区": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/%E5%85%89%E9%9B%BE%E5%B1%B1_%28142253111%29.jpeg/960px-%E5%85%89%E9%9B%BE%E5%B1%B1_%28142253111%29.jpeg",
+    "大连老虎滩海洋公园·极地馆": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/%E5%A4%A7%E8%BF%9E%E8%80%81%E8%99%8E%E6%BB%A9%E4%BA%94%E8%99%8E%E9%9B%95%E5%83%8F-1.jpg/960px-%E5%A4%A7%E8%BF%9E%E8%80%81%E8%99%8E%E6%BB%A9%E4%BA%94%E8%99%8E%E9%9B%95%E5%83%8F-1.jpg",
+    "阿拉善盟胡杨林旅游区": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/%E5%86%85%E8%92%99%E5%8F%A4_%E9%A2%9D%E6%B5%8E%E7%BA%B3_%E8%83%A1%E6%9D%A8%E7%A7%8B%E6%99%AF_-_panoramio.jpg/960px-%E5%86%85%E8%92%99%E5%8F%A4_%E9%A2%9D%E6%B5%8E%E7%BA%B3_%E8%83%A1%E6%9D%A8%E7%A7%8B%E6%99%AF_-_panoramio.jpg",
+    "武汉木兰文化生态旅游区": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/%E6%9C%A8%E5%85%B0%E5%A4%A9%E6%B1%A0_2024-04-24.jpg/960px-%E6%9C%A8%E5%85%B0%E5%A4%A9%E6%B1%A0_2024-04-24.jpg",
+    "咸宁三国赤壁古战场景区": "https://upload.wikimedia.org/wikipedia/commons/9/96/%E4%B8%89%E5%9B%BD%E8%B5%A4%E5%A3%81%E5%8F%A4%E6%88%98%E5%9C%BA%E6%99%AF%E5%8C%BA%E5%A4%A7%E9%97%A8.jpg",
+    "株洲炎帝陵景区": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Mausoleum_of_Emperor_Yan%2C_Hunan_%2820250123134405%29.jpg/960px-Mausoleum_of_Emperor_Yan%2C_Hunan_%2820250123134405%29.jpg",
+    "吴忠青铜峡黄河大峡谷旅游区": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/%E9%9D%92%E9%93%9C%E5%B3%A1%E9%BB%84%E6%B2%B3%E5%A4%A7%E5%B3%A1%E8%B0%B7.jpg/960px-%E9%9D%92%E9%93%9C%E5%B3%A1%E9%BB%84%E6%B2%B3%E5%A4%A7%E5%B3%A1%E8%B0%B7.jpg",
+    "通化高句丽文物古迹旅游景区": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/South_of_Tomb_of_the_General.jpg/960px-South_of_Tomb_of_the_General.jpg",
+    "赤峰阿斯哈图石林景区": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/%E9%98%BF%E6%96%AF%E5%93%88%E5%9B%BE%E7%9F%B3%E6%9E%97%E5%85%A5%E5%8F%A3_-_Entrance_of_Arshihaty_Granite_Forest_Park_-_2011.06_-_panoramio.jpg/960px-%E9%98%BF%E6%96%AF%E5%93%88%E5%9B%BE%E7%9F%B3%E6%9E%97%E5%85%A5%E5%8F%A3_-_Entrance_of_Arshihaty_Granite_Forest_Park_-_2011.06_-_panoramio.jpg",
+    "伊犁喀拉峻景区": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Kalajun_Grassland.jpg/960px-Kalajun_Grassland.jpg",
+    "江布拉克景区": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/%E6%96%B0%E7%96%86%E6%B1%9F%E5%B8%83%E6%8B%89%E5%85%8B%E5%9B%BD%E5%AE%B6%E6%A3%AE%E6%9E%97%E5%85%AC%E5%9B%AD_Xinjiang_Jiangbulake_National_forest_park.jpg/960px-%E6%96%B0%E7%96%86%E6%B1%9F%E5%B8%83%E6%8B%89%E5%85%8B%E5%9B%BD%E5%AE%B6%E6%A3%AE%E6%9E%97%E5%85%AC%E5%9B%AD_Xinjiang_Jiangbulake_National_forest_park.jpg",
+    "延边敦化六鼎山文化旅游区": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Dunhua_Liuding_Mountain_Banner.jpg/960px-Dunhua_Liuding_Mountain_Banner.jpg",
+    "呼和浩特老牛湾黄河大峡谷旅游区": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/%E5%87%86%E6%A0%BC%E5%B0%94%E6%97%97%E4%B8%8E%E6%B8%85%E6%B0%B4%E6%B2%B3%E5%8E%BF_%E8%80%81%E7%89%9B%E6%B9%BE%E9%BB%84%E6%B2%B3%E5%A4%A7%E5%B3%A1%E8%B0%B7.jpg/960px-%E5%87%86%E6%A0%BC%E5%B0%94%E6%97%97%E4%B8%8E%E6%B8%85%E6%B0%B4%E6%B2%B3%E5%8E%BF_%E8%80%81%E7%89%9B%E6%B9%BE%E9%BB%84%E6%B2%B3%E5%A4%A7%E5%B3%A1%E8%B0%B7.jpg"
+  },
+  "official": {
+    "常州环球恐龙城休闲旅游区": {
+      "website": "https://www.konglong.com",
+      "hours": "平日约 09:00-17:00（16:00 停止入园）；节假日/夜场约 09:00-21:00（以官网日历为准）",
+      "ticketHint": "中华恐龙园官网成人票约 260 元；儿童/学生优惠，以官网当日为准",
+      "confidence": "medium"
+    },
+    "连云港花果山景区": {
+      "website": "https://www.lyghgs.cn",
+      "hours": "旺季约 07:00-18:00 / 淡季约 08:00-18:00（云台山管委会口径）",
+      "ticketHint": "旺季约 90 元 / 淡季约 50 元（政府公示，需预约）",
+      "confidence": "high"
+    },
+    "鄂尔多斯响沙湾景区": {
+      "website": "https://xiangsw.com",
+      "hours": "约 08:30-17:30（季节调整，以官网为准）",
+      "ticketHint": "大门约 120 元；索道/岛屿套票另计",
+      "confidence": "medium"
+    },
+    "六安万佛湖风景区": {
+      "website": "http://www.wanfohu.com.cn",
+      "hours": "约 08:00-17:00（游船等项目另行公告）",
+      "ticketHint": "门票与游船分售，以官网/现场公示为准",
+      "confidence": "medium"
+    },
+    "宣城绩溪龙川景区": {
+      "ticketHint": "古村落景区，票价以现场/官方渠道公示为准",
+      "confidence": "low"
+    },
+    "阜阳八里河景区": {
+      "ticketHint": "园区免费或分项目收费，以现场公示为准",
+      "confidence": "low"
+    },
+    "黄山古徽州文化旅游区": {
+      "ticketHint": "各子景区分售，以现场公示为准",
+      "confidence": "low"
+    },
+    "马鞍山采石矶景区": {
+      "ticketHint": "门票与园中园分售，以现场公示为准",
+      "confidence": "low"
+    },
+    "滁州琅琊山景区": {
+      "ticketHint": "含醉翁亭等景点，联票/分票以现场公示为准",
+      "confidence": "low"
+    },
+    "苏州吴中太湖旅游区": {
+      "ticketHint": "东山等子景区分售，水上游线另计",
+      "confidence": "low"
+    },
+    "抚州大觉山景区": {
+      "ticketHint": "门票与漂流等项目分售，季节性运营",
+      "confidence": "low"
+    },
+    "赤峰阿斯哈图石林景区": {
+      "ticketHint": "门票约 100 元量级，以现场公示为准",
+      "confidence": "low"
+    },
+    "呼和浩特老牛湾黄河大峡谷旅游区": {
+      "ticketHint": "门票与游船分售，以现场公示为准",
+      "confidence": "low"
+    },
+    "海东互助土族故土园景区": {
+      "ticketHint": "民俗园门票以现场公示为准",
+      "confidence": "low"
+    },
+    "阿咪东索景区": {
+      "ticketHint": "高原景区门票以现场/预约渠道为准",
+      "confidence": "low"
+    },
+    "临沂萤火虫水洞·地下大峡谷旅游区": {
+      "ticketHint": "水洞/大峡谷联票或分售，以现场公示为准",
+      "confidence": "low"
+    },
+    "西沙明珠湖景区": {
+      "ticketHint": "湿地景区门票以现场公示为准",
+      "confidence": "low"
+    },
+    "日喀则扎什伦布寺景区": {
+      "ticketHint": "寺院门票以现场公示为准（需尊重宗教场所规定）",
+      "confidence": "low"
+    },
+    "天山托木尔景区": {
+      "ticketHint": "门票以现场/季节公告为准",
+      "confidence": "low"
+    },
+    "迪庆普达措国家公园": {
+      "ticketHint": "门票+环保车，以景区预约渠道为准",
+      "confidence": "low"
+    },
+    "衢州根宫佛国文化旅游区": {
+      "ticketHint": "门票以现场公示为准",
+      "confidence": "low"
+    },
+    "鄂尔多斯成吉思汗陵旅游区": {
+      "ticketHint": "门票约 120 元量级，以现场公示为准",
+      "confidence": "low"
+    },
+    "呼伦贝尔大草原·莫尔格勒河景区": {
+      "ticketHint": "草原公共区多免费，营地项目另计",
+      "confidence": "low"
+    },
+    "甘南冶力关旅游区": {
+      "ticketHint": "分景点售票，以现场公示为准",
+      "confidence": "low"
+    },
+    "三明泰宁风景旅游区": {
+      "ticketHint": "大金湖等分景点售票，游船另计",
+      "confidence": "low"
+    },
+    "宁德白水洋-鸳鸯溪旅游区": {
+      "ticketHint": "白水洋/鸳鸯溪分售或联票，以现场公示为准",
+      "confidence": "low"
+    },
+    "宁德太姥山旅游区": {
+      "ticketHint": "门票约 100 元量级，索道另计",
+      "confidence": "low"
+    },
+    "龙岩冠豸山景区": {
+      "ticketHint": "门票以现场公示为准",
+      "confidence": "low"
+    },
+    "苏州沙家浜·虞山尚湖旅游区": {
+      "ticketHint": "沙家浜/尚湖分售，以现场公示为准",
+      "confidence": "low"
+    },
+    "镇江茅山景区": {
+      "ticketHint": "道观香火区与景区门票规则不同，以现场为准",
+      "confidence": "low"
+    },
+    "常州春秋淹城旅游区": {
+      "ticketHint": "乐园/古城项目套票，以现场公示为准",
+      "confidence": "low"
+    },
+    "宿迁洪泽湖湿地景区": {
+      "ticketHint": "湿地门票与观鸟项目分计",
+      "confidence": "low"
+    },
+    "连云港连岛景区": {
+      "ticketHint": "海岛公共区多免费，收费景点另计",
+      "confidence": "low"
+    },
+    "上饶龟峰景区": {
+      "ticketHint": "门票以现场公示为准",
+      "confidence": "low"
+    },
+    "九江庐山西海景区": {
+      "ticketHint": "门票与游船分售",
+      "confidence": "low"
+    },
+    "赣州三百山景区": {
+      "ticketHint": "门票以现场公示为准",
+      "confidence": "low"
+    },
+    "本溪水洞景区": {
+      "ticketHint": "门票约 130 元量级（含船票常见套餐），以现场为准",
+      "confidence": "low"
+    },
+    "本溪五女山景区": {
+      "ticketHint": "门票以现场公示为准",
+      "confidence": "low"
+    },
+    "沂蒙山景区": {
+      "ticketHint": "龟蒙/云蒙等片区分售",
+      "confidence": "low"
+    },
+    "东营黄河口生态旅游区": {
+      "ticketHint": "门票与观光车分计，观鸟季另公告",
+      "confidence": "low"
+    },
+    "济宁微山湖旅游区": {
+      "ticketHint": "门票与游船分售",
+      "confidence": "low"
+    },
+    "青岛奥帆海洋文化旅游区": {
+      "ticketHint": "滨海公共区免费，场馆另收费",
+      "confidence": "low"
+    },
+    "台州天台山景区": {
+      "ticketHint": "国清寺等宗教场所与景区门票规则不同",
+      "confidence": "low"
+    },
+    "衢州江郎山·廿八都旅游区": {
+      "ticketHint": "江郎山门票与廿八都古镇分计",
+      "confidence": "low"
+    },
+    "温州刘伯温故里景区": {
+      "ticketHint": "门票以现场公示为准",
+      "confidence": "low"
+    },
+    "丽水云和梯田景区": {
+      "ticketHint": "门票以现场公示为准",
+      "confidence": "low"
+    },
+    "金华双龙风景旅游区": {
+      "ticketHint": "溶洞门票以现场公示为准",
+      "confidence": "low"
+    },
+    "毕节织金洞景区": {
+      "ticketHint": "溶洞门票约 100 元量级，以现场为准",
+      "confidence": "low"
+    },
+    "克拉玛依世界魔鬼城景区": {
+      "website": "http://www.klmysjmgc.com",
+      "hours": "售票约 09:30-19:00（季节调整，乌尔禾区公告）",
+      "ticketHint": "旺季约 42 元 / 淡季约 21 元，区间车另计",
+      "confidence": "medium"
+    },
+    "泰州溱湖旅游景区": {
+      "website": "https://www.qinlake.com",
+      "hours": "约 08:00-17:30（售票常至 15:30）",
+      "ticketHint": "湿地公园约 80 元（含班船）；联票另计",
+      "confidence": "high"
+    },
+    "威海华夏城景区": {
+      "website": "http://www.huaxiawenlv.com",
+      "hours": "约 08:00-17:30（请先确认营业状态）",
+      "ticketHint": "以官方渠道公示为准",
+      "confidence": "low"
+    },
+    "宜春明月山旅游区": {
+      "website": "https://www.myslyjt.com",
+      "hours": "约 07:30-16:30（以景区公告为准）",
+      "ticketHint": "约 95 元，索道另计",
+      "confidence": "medium"
+    },
+    "晋中绵山风景区": {
+      "hours": "旺季约 08:00-19:30 / 淡季约 08:30-18:00",
+      "ticketHint": "旺季约 110 元 / 淡季约 90 元，游览车另计",
+      "confidence": "medium"
+    },
+    "大连老虎滩海洋公园·极地馆": {
+      "website": "https://www.laohutan.com.cn",
+      "hours": "08:30-16:30（官网）",
+      "ticketHint": "淡季成人约 190 元（含园区/极地馆等五馆）；学生/军人优惠",
+      "confidence": "high"
+    }
+  }
+}
