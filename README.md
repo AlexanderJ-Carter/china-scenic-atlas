@@ -2,6 +2,8 @@
 
 中国 A 级旅游景区交互式可视化：全国视图展示 5A/4A 分布，**点击省级行政区进入该省地图**（市级边界实体化、邻省淡化背景），支持等级/类别/年份筛选、年份演进动画、搜索与富详情。
 
+**在线演示**：[alexanderj-carter.github.io/china-scenic-atlas](https://alexanderj-carter.github.io/china-scenic-atlas/)
+
 ![全国视图](docs/screenshot-national.png) ![聚焦视图](docs/screenshot-focus.png)
 
 ![地形模式](docs/screenshot-terrain.png)
@@ -78,7 +80,7 @@ Vue 3 + TypeScript + Vite · [Apache ECharts 6](https://echarts.apache.org/)（�
 
 ## 部署
 
-- **GitHub Pages**：含 [deploy-pages.yml](.github/workflows/deploy-pages.yml)，手动触发或打 `v*` tag。首次需在 Settings → Pages → Source 选「GitHub Actions」
+- **GitHub Pages**：推送 `main` / 打 `v*` tag / 手动触发 [deploy-pages.yml](.github/workflows/deploy-pages.yml)；Source 选「GitHub Actions」。演示站：https://alexanderj-carter.github.io/china-scenic-atlas/
 - **Docker**：`docker compose up --build` → http://localhost:8080
 
 ## ⚠️ 免责声明
