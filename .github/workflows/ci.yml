@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: Lint / Typecheck / Build / Data / E2E
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Format check
+        run: npm run format:check
+
+      - name: Typecheck & build
+        run: npm run build
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Data validation
+        run: npm run data:validate
+
+      - name: E2E smoke test
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq google-chrome-stable
+          npm run preview -- --port 4173 &
+          for i in $(seq 1 30); do curl -sf http://localhost:4173/ >/dev/null && break || sleep 1; done
+          node scripts/e2e-smoke.mjs http://localhost:4173/
+
+      - name: Upload e2e screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-screenshots
+          path: /tmp/scenic-e2e/
+          if-no-files-found: ignore
