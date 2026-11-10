@@ -429,7 +429,7 @@ function toggleCategory(name: string): void {
 }
 
 .level-badge.l5 {
-  background: #c58600;
+  background: #e2a400;
 }
 
 .level-badge.l4 {

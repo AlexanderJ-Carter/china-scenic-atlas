@@ -525,7 +525,7 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
 }
 
 .level-badge.l5 {
-  background: #c58600;
+  background: #e2a400;
 }
 
 .level-badge.l4 {
