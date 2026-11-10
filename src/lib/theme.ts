@@ -23,7 +23,7 @@ export function toggleTheme(): void {
 function apply(mode: ThemeMode): void {
   document.documentElement.dataset.theme = mode
   const meta = document.querySelector('meta[name="theme-color"]')
-  if (meta) meta.setAttribute('content', mode === 'dark' ? '#0e1a2c' : '#f4f7fb')
+  if (meta) meta.setAttribute('content', mode === 'dark' ? '#111112' : '#f8f4ed')
   try {
     localStorage.setItem(STORAGE_KEY, mode)
   } catch {
@@ -62,45 +62,45 @@ export interface ChartPalette {
 export function chartPalette(): ChartPalette {
   if (theme.mode === 'light') {
     return {
-      ramp: ['#eef4fb', '#cfe0f2', '#a6c7e8', '#7aa6d6', '#4d86c2'],
-      areaTop: '#eef4fb',
-      areaBottom: '#dde8f4',
-      border: '#b9c8da',
-      emphasis: '#cfe0f0',
-      dimArea: '#f2f5f9',
-      dimBorder: '#e4e9f0',
-      focusBorder: '#7aa6d6',
-      text: '#243447',
-      subText: '#64748b',
-      label: '#5b6b80',
-      level5a: '#ea9c0f',
-      level5aGlow: 'rgba(234, 156, 15, 0.45)',
-      level4a: '#0d9488',
-      level4aBorder: 'rgba(255, 255, 255, 0.9)',
+      ramp: ['#dbecff', '#78beff', '#2694fe', '#004cbc', '#02165e'],
+      areaTop: '#f8f4ed',
+      areaBottom: '#efe8db',
+      border: '#ccd3db',
+      emphasis: '#e8f3ff',
+      dimArea: '#f3eee5',
+      dimBorder: '#e4ddd0',
+      focusBorder: '#0171e3',
+      text: '#15110c',
+      subText: '#4e606f',
+      label: '#4e606f',
+      level5a: '#c58600',
+      level5aGlow: 'rgba(197, 134, 0, 0.45)',
+      level4a: '#08a3a3',
+      level4aBorder: 'rgba(255, 255, 255, 0.92)',
       tooltipBg: 'rgba(255, 255, 255, 0.97)',
-      tooltipBorder: '#d9e2ee',
-      tooltipText: '#243447',
+      tooltipBorder: 'rgba(5, 54, 89, 0.12)',
+      tooltipText: '#15110c',
     }
   }
   return {
-    ramp: ['#13283f', '#1c4266', '#27628f', '#3785b8', '#52a5d6'],
-    areaTop: '#1c2f4c',
-    areaBottom: '#12203a',
-    border: '#3a628c',
-    emphasis: '#234870',
-    dimArea: '#101a2a',
-    dimBorder: '#1c2b40',
-    focusBorder: '#3785b8',
-    text: '#e2ecf7',
-    subText: '#93a8c0',
-    label: '#8fa9c2',
-    level5a: '#f5c66b',
-    level5aGlow: 'rgba(245, 198, 107, 0.55)',
-    level4a: '#3ed3c9',
-    level4aBorder: 'rgba(62, 211, 201, 0.5)',
-    tooltipBg: 'rgba(10, 20, 36, 0.94)',
-    tooltipBorder: '#2f5c86',
-    tooltipText: '#dce8f5',
+    ramp: ['#02165e', '#004cbc', '#2694fe', '#78beff', '#dbecff'],
+    areaTop: '#1f1f22',
+    areaBottom: '#161618',
+    border: '#494d53',
+    emphasis: '#28292c',
+    dimArea: '#141416',
+    dimBorder: '#2a2b2f',
+    focusBorder: '#2694fe',
+    text: '#dfe2e5',
+    subText: '#aaafb5',
+    label: '#aaafb5',
+    level5a: '#fbce03',
+    level5aGlow: 'rgba(251, 206, 3, 0.5)',
+    level4a: '#40dccd',
+    level4aBorder: 'rgba(64, 220, 205, 0.45)',
+    tooltipBg: 'rgba(31, 31, 34, 0.96)',
+    tooltipBorder: 'rgba(242, 244, 246, 0.12)',
+    tooltipText: '#dfe2e5',
   }
 }
 
@@ -109,16 +109,15 @@ export function chartPalette(): ChartPalette {
 /**
  * 地貌底图模式：按大区地理特征着色（林地/平原/丘陵/荒漠/高原），
  * 省份间以 adcode 派生的明度偏移制造自然过渡。
- * 与 aeryzhao/AAAAA 的纯色地图形成差异化。
  */
 const TERRAIN_LIGHT: Record<string, string> = {
-  华北: '#c9c19a', // 黄土/平原 沙黄
-  东北: '#a8bd93', // 针阔混交林 灰绿
-  华东: '#b5cfa0', // 江南水乡 青绿
-  华中: '#a4c497', // 丘陵 翠绿
-  华南: '#8bb98a', // 热带 深绿
-  西南: '#b9b18c', // 山地 褐绿
-  西北: '#d4c49e', // 荒漠 沙金
+  华北: '#c9c19a',
+  东北: '#a8bd93',
+  华东: '#b5cfa0',
+  华中: '#a4c497',
+  华南: '#8bb98a',
+  西南: '#b9b18c',
+  西北: '#d4c49e',
 }
 
 const TERRAIN_DARK: Record<string, string> = {
@@ -135,7 +134,6 @@ const TERRAIN_DARK: Record<string, string> = {
 export function terrainColor(region: string, adcode: number): string {
   const table = theme.mode === 'light' ? TERRAIN_LIGHT : TERRAIN_DARK
   const base = table[region] ?? table['华东']
-  // adcode 哈希 → ±6% 明度，省份间自然深浅变化
   const offset = (((adcode % 13) / 12 - 0.5) * 0.12) as number
   return shade(base, offset)
 }

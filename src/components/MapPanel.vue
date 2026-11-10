@@ -419,7 +419,7 @@ onBeforeUnmount(() => {
   overflow: hidden;
   background: var(--map-bg);
   border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow);
   transition:
     box-shadow 0.4s ease,
     border-color 0.3s ease;
@@ -510,9 +510,9 @@ onBeforeUnmount(() => {
 }
 
 .mode-btn.on {
-  background: color-mix(in srgb, var(--accent) 22%, transparent);
-  color: var(--accent-strong);
-  font-weight: 600;
+  background: var(--ink);
+  color: var(--ink-on);
+  font-weight: 650;
 }
 
 .mode-btn:not(.on):hover {

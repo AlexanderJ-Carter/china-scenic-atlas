@@ -333,13 +333,14 @@ function switchSpot(s: Spot): void {
   top: 0;
   right: 0;
   bottom: 0;
-  width: min(430px, 94vw);
+  width: min(440px, 94vw);
   background: var(--panel-solid);
   border-left: 1px solid var(--border);
   overflow-y: auto;
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
+  border-radius: var(--radius) 0 0 var(--radius);
 }
 
 .close-btn {
@@ -419,11 +420,11 @@ function switchSpot(s: Spot): void {
 }
 
 .level-badge.l5 {
-  background: linear-gradient(120deg, #f0ad2e, #e08c06);
+  background: linear-gradient(120deg, #e2a400, #c58600);
 }
 
 .level-badge.l4 {
-  background: linear-gradient(120deg, #14b8a6, #0d9488);
+  background: linear-gradient(120deg, #0db7af, #08767d);
 }
 
 .unofficial {
@@ -449,11 +450,11 @@ function switchSpot(s: Spot): void {
 
 .spot-name {
   margin: 0;
-  font-size: 22px;
-  font-weight: 800;
-  line-height: 1.32;
+  font-size: 24px;
+  font-weight: 750;
+  line-height: 1.28;
   color: var(--text);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.03em;
 }
 
 .meta-chips {

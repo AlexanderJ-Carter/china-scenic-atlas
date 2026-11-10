@@ -69,16 +69,16 @@ onBeforeUnmount(() => {
   height: 100dvh;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  gap: 12px;
-  padding: 16px 18px 10px;
-  max-width: 1600px;
+  gap: 14px;
+  padding: 18px 20px 12px;
+  max-width: 1680px;
   margin: 0 auto;
 }
 
 .app-main {
   display: grid;
-  grid-template-columns: 302px 1fr;
-  gap: 14px;
+  grid-template-columns: 320px 1fr;
+  gap: 16px;
   min-height: 0;
   min-width: 0;
 }
@@ -98,9 +98,10 @@ onBeforeUnmount(() => {
   justify-content: space-between;
   gap: 12px;
   flex-wrap: wrap;
-  font-size: 11.5px;
-  color: color-mix(in srgb, var(--sub) 80%, transparent);
-  padding: 2px 4px;
+  font-size: 12px;
+  color: color-mix(in srgb, var(--sub) 88%, transparent);
+  padding: 2px 6px;
+  letter-spacing: -0.01em;
 }
 
 .app-footer a {
@@ -117,6 +118,7 @@ onBeforeUnmount(() => {
     height: auto;
     min-height: 100dvh;
     padding: 12px;
+    gap: 12px;
   }
 
   .app-main {

@@ -232,21 +232,22 @@ function toggleCategory(name: string): void {
 }
 
 .kpi {
-  background: var(--panel);
+  background: var(--panel-solid);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 13px 8px;
+  padding: 14px 8px 12px;
   text-align: center;
-  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-sm);
   transition: border-color 0.3s;
 }
 
 .kpi-value {
-  font-size: 25px;
-  font-weight: 800;
+  font-size: 26px;
+  font-weight: 750;
+  letter-spacing: -0.04em;
   color: var(--text);
   font-variant-numeric: tabular-nums;
-  line-height: 1.15;
+  line-height: 1.1;
 }
 
 .kpi.gold .kpi-value {
@@ -258,17 +259,18 @@ function toggleCategory(name: string): void {
 }
 
 .kpi-label {
-  margin-top: 3px;
+  margin-top: 4px;
   font-size: 11px;
   color: var(--sub);
+  letter-spacing: -0.01em;
 }
 
 .card {
-  background: var(--panel);
+  background: var(--panel-solid);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 14px 14px 12px;
-  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-sm);
   transition: border-color 0.3s;
 }
 
@@ -276,6 +278,7 @@ function toggleCategory(name: string): void {
   margin: 0 0 10px;
   font-size: 13px;
   font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--text);
 }
 
@@ -342,16 +345,12 @@ function toggleCategory(name: string): void {
   position: absolute;
   inset: 0 auto 0 0;
   border-radius: 3px;
-  background: linear-gradient(
-    90deg,
-    color-mix(in srgb, var(--accent) 35%, #4d86c2),
-    color-mix(in srgb, var(--accent) 85%, #4d86c2)
-  );
+  background: linear-gradient(90deg, color-mix(in srgb, var(--info) 55%, #78beff), var(--info));
   transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .bar-fill.cat {
-  background: linear-gradient(90deg, #d9a13c, #e08c06);
+  background: linear-gradient(90deg, #e2a400, #c58600);
 }
 
 .bar-value {
@@ -430,11 +429,21 @@ function toggleCategory(name: string): void {
 }
 
 .level-badge.l5 {
-  background: #ea9c0f;
+  background: #c58600;
 }
 
 .level-badge.l4 {
-  background: #0d9488;
+  background: #08a3a3;
+}
+
+:global([data-theme='dark']) .level-badge.l5 {
+  background: #fbce03;
+  color: #15110c;
+}
+
+:global([data-theme='dark']) .level-badge.l4 {
+  background: #40dccd;
+  color: #15110c;
 }
 
 .spot-name {

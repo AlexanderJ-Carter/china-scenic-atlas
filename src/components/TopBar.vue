@@ -10,8 +10,6 @@ import { categoryStyle } from '@/lib/icons'
 import { searchSpots } from '@/lib/search'
 import type { Spot } from '@/types'
 
-/* ---------------- 搜索（支持键盘导航 / 空态提示） ---------------- */
-
 watch(
   () => [state.levels['4A'], state.query.trim()] as const,
   ([enabled, query]) => {
@@ -65,7 +63,6 @@ function onSearchKeydown(e: KeyboardEvent): void {
       jumpToSpot(target)
     }
   } else if (e.key === 'Escape') {
-    // 输入框内 Esc 优先清空搜索（阻止冒泡到全局的返回上一级处理）
     e.stopPropagation()
     if (state.query) {
       state.query = ''
@@ -73,8 +70,6 @@ function onSearchKeydown(e: KeyboardEvent): void {
     }
   }
 }
-
-/* ---------------- 年份演进动画 ---------------- */
 
 let playTimer: ReturnType<typeof setInterval> | null = null
 
@@ -105,13 +100,9 @@ onBeforeUnmount(() => {
   if (playTimer) clearInterval(playTimer)
 })
 
-/* ---------------- 面包屑 ---------------- */
-
 function backToNational(): void {
   state.view = { mode: 'national' }
 }
-
-/* ---------------- 随机探索 & 打卡 ---------------- */
 
 const visitedTotal = computed(() => visited.names.size)
 
@@ -126,14 +117,24 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
 
 <template>
   <header class="topbar">
-    <div class="row main-row">
+    <div class="hero-row">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+            <path
+              d="M6.5 21.5 Q16 4.5 25.5 21.5"
+              stroke="currentColor"
+              stroke-width="2.4"
+              stroke-linecap="round"
+            />
+            <circle cx="16" cy="13.5" r="2.6" fill="var(--gold)" />
+          </svg>
+        </div>
         <div class="titles">
           <h1 class="title">中国 A 级景区地图</h1>
           <p class="subtitle">
-            {{ DATA_META.spotCount5A }} 家 5A · {{ DATA_META.spotCount4A }} 家 4A · 数据截至
-            {{ DATA_META.generatedAt.slice(0, 10) }} · 📍 已打卡 {{ visitedTotal }}
+            {{ DATA_META.spotCount5A }} 家 5A · {{ DATA_META.spotCount4A }} 家 4A · 截至
+            {{ DATA_META.generatedAt.slice(0, 10) }} · 已打卡 {{ visitedTotal }}
           </p>
         </div>
       </div>
@@ -143,11 +144,16 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
         :class="{ focused: searchFocused || searchResults.length }"
         @focusout="onSearchFocusOut"
       >
-        <span class="search-icon">⌕</span>
+        <span class="search-icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" width="16" height="16" fill="none">
+            <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.6" />
+            <path d="M13 13l4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+        </span>
         <input
           v-model="state.query"
           type="text"
-          placeholder="搜索景区 / 城市…"
+          placeholder="搜索景区 / 城市…  /"
           title="按 / 快速搜索，↑↓ 选择，Enter 打开，Esc 清空"
           role="combobox"
           aria-label="搜索景区或城市"
@@ -209,18 +215,51 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
       </div>
 
       <div class="quick-actions">
-        <button class="theme-toggle" title="随机探索一家 5A 景区" @click="randomExplore">🎲</button>
+        <button class="icon-btn" title="随机探索一家 5A 景区" @click="randomExplore">
+          <svg viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
+            <path
+              d="M3.5 4.5h4l2.5 3.5L13 4.5h3.5M3.5 15.5h4l2.5-3.5 2.5 3.5h3.5M16.5 4.5v11"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
         <button
-          class="theme-toggle"
+          class="icon-btn"
           :title="theme.mode === 'light' ? '切换到深色' : '切换到浅色'"
           @click="toggleTheme"
         >
-          {{ theme.mode === 'light' ? '🌙' : '☀️' }}
+          <svg
+            v-if="theme.mode === 'light'"
+            viewBox="0 0 20 20"
+            width="16"
+            height="16"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M15.5 11.2A6.5 6.5 0 0 1 8.8 4.5 6.6 6.6 0 1 0 15.5 11.2Z"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <svg v-else viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="3.2" stroke="currentColor" stroke-width="1.5" />
+            <path
+              d="M10 2.5v1.5M10 16v1.5M2.5 10H4M16 10h1.5M4.7 4.7l1.1 1.1M14.2 14.2l1.1 1.1M4.7 15.3l1.1-1.1M14.2 5.8l1.1-1.1"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
         </button>
       </div>
     </div>
 
-    <div class="row toolbar">
+    <div class="toolbar surface">
       <nav class="breadcrumb" aria-label="当前位置">
         <button :class="{ active: state.view.mode === 'national' }" @click="backToNational()">
           全国
@@ -249,14 +288,14 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
           :aria-pressed="state.levels['4A']"
           @click="state.levels['4A'] = !state.levels['4A']"
         >
-          4A 收录 · {{ DATA_META.spotCount4A }}
+          4A · {{ DATA_META.spotCount4A }}
         </button>
         <button v-if="state.category" class="chip cat" @click="state.category = null">
           {{ categoryStyle(state.category).icon }} {{ state.category }} ✕
         </button>
       </div>
 
-      <span v-if="loading4a" role="status">正在加载 4A…</span>
+      <span v-if="loading4a" role="status" class="status">正在加载 4A…</span>
       <button v-else-if="error4a" class="chip" @click="ensure4ALoaded">
         {{ error4a }}
       </button>
@@ -282,6 +321,7 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
         <span class="year-value">{{ state.yearMax }}</span>
       </div>
     </div>
+
     <div class="filter-help">
       <span>记录年份 ≤ {{ state.yearMax }} · 5A 评定 / 4A 收录</span>
       <label><input v-model="state.includeUnknownYear" type="checkbox" /> 包含年份未知</label>
@@ -297,20 +337,17 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
   gap: 12px;
 }
 
-.row {
+.hero-row {
   display: flex;
   align-items: center;
   gap: 18px;
-}
-
-.main-row {
   justify-content: space-between;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 13px;
+  gap: 12px;
   min-width: 0;
 }
 
@@ -318,64 +355,47 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
   width: 42px;
   height: 42px;
   flex: none;
-  border-radius: 13px;
-  background:
-    radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.9), transparent 42%),
-    linear-gradient(150deg, var(--accent), var(--accent-strong));
+  border-radius: 12px;
+  background: var(--ink);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
   box-shadow: var(--shadow-sm);
-  position: relative;
-}
-
-.logo::after {
-  content: '';
-  position: absolute;
-  inset: 8px 10px 14px;
-  border-radius: 50% 50% 50% 0;
-  border-bottom: 2.5px solid rgba(255, 255, 255, 0.85);
-  transform: rotate(-18deg);
 }
 
 .title {
   margin: 0;
-  font-size: 21px;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  background: linear-gradient(
-    92deg,
-    var(--text) 30%,
-    color-mix(in srgb, var(--accent) 60%, var(--text))
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-size: 22px;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  color: var(--text);
   white-space: nowrap;
 }
 
 .subtitle {
-  margin: 3px 0 0;
-  font-size: 12px;
+  margin: 2px 0 0;
+  font-size: 12.5px;
   color: var(--sub);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
-/* ---------- 搜索 ---------- */
-
 .search {
   position: relative;
-  width: min(320px, 32vw);
+  width: min(360px, 34vw);
 }
 
 .search input {
   width: 100%;
-  padding: 9px 34px 9px 34px;
-  border-radius: var(--radius-sm);
+  padding: 10px 36px 10px 40px;
+  border-radius: var(--radius-pill);
   border: 1px solid var(--border);
   background: var(--panel-solid);
   color: var(--text);
-  font-size: 13px;
+  font-size: 13.5px;
   font-family: inherit;
   outline: none;
+  box-shadow: var(--shadow-sm);
   transition:
     border-color 0.2s,
     box-shadow 0.2s;
@@ -386,23 +406,26 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
 }
 
 .search.focused input {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft);
+  border-color: color-mix(in srgb, var(--info) 55%, var(--border));
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--info) 14%, transparent),
+    var(--shadow-sm);
 }
 
 .search-icon {
   position: absolute;
-  left: 11px;
+  left: 14px;
   top: 50%;
   transform: translateY(-50%);
   color: var(--sub);
-  font-size: 15px;
+  display: grid;
+  place-items: center;
   pointer-events: none;
 }
 
 .search-clear {
   position: absolute;
-  right: 8px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -418,13 +441,13 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
 
 .search-results {
   position: absolute;
-  top: calc(100% + 6px);
+  top: calc(100% + 8px);
   left: 0;
   right: 0;
   z-index: 30;
   list-style: none;
   margin: 0;
-  padding: 6px;
+  padding: 8px;
   background: var(--panel-solid);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -438,7 +461,7 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
   align-items: center;
   gap: 8px;
   width: 100%;
-  padding: 7px 8px;
+  padding: 8px 10px;
   border: none;
   border-radius: var(--radius-sm);
   background: none;
@@ -502,41 +525,54 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
 }
 
 .level-badge.l5 {
-  background: #ea9c0f;
+  background: #c58600;
 }
 
 .level-badge.l4 {
-  background: #0d9488;
+  background: #08a3a3;
 }
 
-/* ---------- 主题切换 ---------- */
+[data-theme='dark'] .level-badge.l5 {
+  background: #fbce03;
+  color: #15110c;
+}
 
-.theme-toggle {
+[data-theme='dark'] .level-badge.l4 {
+  background: #40dccd;
+  color: #15110c;
+}
+
+.icon-btn {
   flex: none;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
   border: 1px solid var(--border);
   background: var(--panel-solid);
-  font-size: 16px;
+  color: var(--text);
   cursor: pointer;
   display: grid;
   place-items: center;
-  transition: all 0.2s;
+  box-shadow: var(--shadow-sm);
+  transition:
+    border-color 0.2s,
+    transform 0.2s,
+    background 0.2s;
 }
 
-.theme-toggle:hover {
-  border-color: var(--accent);
-  box-shadow: 0 0 12px var(--accent-soft);
-  transform: rotate(12deg);
+.icon-btn:hover {
+  border-color: var(--border-strong);
+  background: color-mix(in srgb, var(--ink) 4%, var(--panel-solid));
+  transform: translateY(-1px);
 }
-
-/* ---------- 工具栏 ---------- */
 
 .toolbar {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px 16px;
+  padding: 10px 12px;
 }
 
 .breadcrumb {
@@ -546,26 +582,24 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
 }
 
 .breadcrumb button {
-  padding: 5px 14px;
+  padding: 6px 14px;
   font-size: 13px;
   font-family: inherit;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   border: 1px solid var(--border);
-  background: var(--chip-bg);
+  background: transparent;
   color: var(--sub);
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .breadcrumb button.active {
-  color: var(--text);
-  border-color: var(--border-strong);
-  background: color-mix(in srgb, var(--accent) 8%, var(--panel-solid));
+  color: var(--ink-on);
+  border-color: transparent;
+  background: var(--ink);
 }
 
 .breadcrumb button.province {
-  color: var(--text);
-  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -573,7 +607,7 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
 
 .breadcrumb .close {
   font-size: 10px;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .breadcrumb .sep {
@@ -589,11 +623,11 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
 }
 
 .chip {
-  padding: 5px 13px;
+  padding: 6px 14px;
   font-size: 12.5px;
-  font-weight: 600;
+  font-weight: 650;
   font-family: inherit;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   border: 1px solid transparent;
   cursor: pointer;
   transition: all 0.2s;
@@ -601,26 +635,27 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
 
 .chip.l5 {
   color: #fff;
-  background: linear-gradient(120deg, #f0ad2e, #e08c06);
+  background: linear-gradient(120deg, #e2a400, #c58600);
 }
 
 .chip.l5:hover {
-  box-shadow: 0 4px 14px rgba(224, 140, 6, 0.35);
+  box-shadow: 0 4px 14px rgba(197, 134, 0, 0.28);
 }
 
 .chip.l4 {
   color: #fff;
-  background: linear-gradient(120deg, #14b8a6, #0d9488);
+  background: linear-gradient(120deg, #0db7af, #08767d);
 }
 
 .chip.l4:hover {
-  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.35);
+  box-shadow: 0 4px 14px rgba(8, 163, 163, 0.28);
 }
 
 .chip.off {
-  background: var(--panel-solid);
+  background: transparent;
   color: var(--sub);
   border-color: var(--border);
+  box-shadow: none;
 }
 
 .chip.cat {
@@ -629,7 +664,10 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
   border-color: color-mix(in srgb, var(--accent) 45%, transparent);
 }
 
-/* ---------- 年份滑块 ---------- */
+.status {
+  font-size: 12px;
+  color: var(--sub);
+}
 
 .year-filter {
   display: flex;
@@ -638,10 +676,10 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
 }
 
 .play {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   flex: none;
-  border-radius: 50%;
+  border-radius: var(--radius-pill);
   border: 1px solid var(--border);
   background: var(--panel-solid);
   color: var(--accent);
@@ -679,16 +717,16 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--ink);
   border: 2px solid var(--panel-solid);
-  box-shadow: 0 0 8px var(--accent-soft);
+  box-shadow: var(--shadow-sm);
 }
 
 .slider-wrap input[type='range']::-moz-range-thumb {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--ink);
   border: 2px solid var(--panel-solid);
 }
 
@@ -704,14 +742,18 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
 .slider-progress {
   height: 100%;
   border-radius: 2px;
-  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 50%, #4d86c2), var(--accent));
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--info) 55%, var(--accent)),
+    var(--accent)
+  );
   transition: width 0.2s;
 }
 
 .year-value {
   font-size: 14px;
   font-weight: 700;
-  color: var(--accent-strong);
+  color: var(--text);
   width: 42px;
   text-align: right;
   font-variant-numeric: tabular-nums;
@@ -721,6 +763,7 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
   display: flex;
   gap: 8px;
 }
+
 .filter-help {
   display: flex;
   align-items: center;
@@ -728,15 +771,18 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
   gap: 10px 16px;
   color: var(--sub);
   font-size: 12px;
+  padding: 0 4px;
 }
+
 .filter-help label {
   display: inline-flex;
   align-items: center;
   gap: 5px;
   cursor: pointer;
 }
+
 @media (max-width: 900px) {
-  .main-row {
+  .hero-row {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 12px;
@@ -751,15 +797,11 @@ const yearPercent = computed(() => ((state.yearMax - MIN_YEAR) / (MAX_YEAR - MIN
     line-height: 1.5;
   }
   .title {
-    font-size: 17px;
+    font-size: 18px;
     white-space: normal;
   }
   .logo {
     display: none;
-  }
-  .theme-toggle {
-    width: 40px;
-    height: 40px;
   }
   .year-filter {
     flex: 1;

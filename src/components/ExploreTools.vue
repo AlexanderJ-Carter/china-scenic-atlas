@@ -61,7 +61,7 @@ function exportList(): void {
       </select>
     </label>
     <button
-      class="utility-button export-list"
+      class="ink-button export-list"
       :disabled="
         !currentSpots.length || exporting || (state.levels['4A'] && (loading4a || Boolean(error4a)))
       "
@@ -80,12 +80,15 @@ function exportList(): void {
   flex-direction: column;
   gap: 10px;
   padding: 14px;
-  background: var(--panel);
+  background: var(--panel-solid);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
 }
 h3 {
   font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   margin: 0;
 }
 label {
@@ -98,12 +101,16 @@ label {
 select {
   width: 100%;
   min-height: 36px;
-  background: var(--panel-solid);
+  background: var(--bg);
   color: var(--text);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 6px;
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
   font: inherit;
+}
+.export-list {
+  width: 100%;
+  text-align: center;
 }
 p {
   margin: 0;
